@@ -1,0 +1,172 @@
+You are a senior Java developer. Build a complete JavaFX Desktop Application project from scratch.
+
+Project Title:
+Smart Lost & Found Management System with Image Support
+
+IMPORTANT:
+
+* Use JavaFX (NOT Swing)
+* Use FXML + Controllers (MVC architecture)
+* Clean, modular, beginner-friendly code
+* No external libraries (only core Java + JavaFX)
+
+---
+
+## FEATURE REQUIREMENTS
+
+1. USER AUTHENTICATION SYSTEM
+
+* Implement login system with two roles:
+
+  * USER
+  * ADMIN
+* Store users in memory (ArrayList) for now
+* Default admin account:
+  email: [admin@test.com](mailto:admin@test.com)
+  password: admin
+* After login:
+  USER → User Dashboard
+  ADMIN → Admin Dashboard
+
+---
+
+2. USER FEATURES
+
+* Report Lost Item
+* Report Found Item
+* View All Items
+* Delete ONLY their own items
+
+---
+
+3. ADMIN FEATURES
+
+* View all items
+* Delete ANY item
+* Add new admin user
+* View all users
+
+---
+
+4. ITEM MANAGEMENT
+   Each item must contain:
+
+* name
+* description
+* location
+* date
+* image path
+* type (Lost / Found)
+* userId (owner)
+
+---
+
+5. UI SCREENS (JavaFX FXML)
+   Create the following screens:
+
+* Login Screen
+* User Dashboard
+* Admin Dashboard
+* Report Lost Item Form
+* Report Found Item Form
+* View Items Screen (TableView)
+* Add Admin Screen
+
+---
+
+6. UI DESIGN REQUIREMENTS
+
+* Use VBox, HBox, BorderPane layouts
+* Proper spacing, padding, alignment
+* Modern clean UI
+* Use CSS styling
+* Buttons styled with colors
+* Centered forms
+
+---
+
+7. TABLEVIEW REQUIREMENTS
+
+* Display all items
+* Columns:
+  Name | Description | Location | Date | Type | Owner
+* Add delete button in each row
+* Apply role-based delete logic:
+  USER → can delete only their own items
+  ADMIN → can delete all items
+
+---
+
+8. IMAGE FEATURE
+
+* Use FileChooser to upload image
+* Store image path
+* Show preview when item is selected
+
+---
+
+9. NAVIGATION
+
+* Use Scene switching or dynamic pane switching
+* Smooth navigation between screens
+
+---
+
+10. VALIDATION
+
+* Prevent empty fields
+* Show alerts for errors and success messages
+
+---
+
+11. PROJECT STRUCTURE
+
+src/
+├── app/
+│     MainApp.java
+├── ui/
+│     Login.fxml
+│     UserDashboard.fxml
+│     AdminDashboard.fxml
+│     LostForm.fxml
+│     FoundForm.fxml
+│     ViewItems.fxml
+│     AddAdmin.fxml
+├── controller/
+│     LoginController.java
+│     UserDashboardController.java
+│     AdminDashboardController.java
+│     ItemController.java
+│     AdminController.java
+├── model/
+│     User.java
+│     Item.java
+├── util/
+│     SessionManager.java
+
+---
+
+12. SESSION MANAGEMENT
+
+* Store currently logged-in user
+* Use it to control permissions
+
+---
+
+13. OUTPUT REQUIREMENT
+
+* Generate complete working code
+* Include:
+
+  * MainApp.java
+  * All FXML files
+  * All Controllers
+  * Model classes
+* Code must be clean and well-commented
+
+---
+
+14. GOAL
+    Build a fully functional, modern JavaFX application with role-based access control and clean UI.
+
+Make it look like a real-world mini product, not a basic college project.

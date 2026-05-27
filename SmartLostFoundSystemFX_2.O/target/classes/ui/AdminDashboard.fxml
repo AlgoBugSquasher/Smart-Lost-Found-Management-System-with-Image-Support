@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700" minWidth="1100" prefHeight="700" prefWidth="1100" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
+   <top>
+      <VBox styleClass="header-bar-admin">
+         <padding>
+            <Insets bottom="18" left="25" right="25" top="18" />
+         </padding>
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label styleClass="header-title" text="Smart Lost &amp; Found" />
+            <Label fx:id="welcomeLabel" styleClass="header-subtitle" text="Admin Dashboard" />
+         </HBox>
+      </VBox>
+   </top>
+   
+   <left>
+      <VBox alignment="TOP_CENTER" spacing="15" styleClass="sidebar-admin">
+         <padding>
+            <Insets bottom="25" left="20" right="20" top="25" />
+         </padding>
+         
+         <Text styleClass="menu-title-admin" text="ADMIN MENU" />
+         
+         <Button fx:id="viewAllItemsButton" onAction="#handleViewAllItems" styleClass="menu-button-admin" text="View All Items">
+            <padding>
+               <Insets bottom="14" left="20" right="20" top="14" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="viewUsersButton" onAction="#handleViewUsers" styleClass="menu-button-admin" text="View All Users">
+            <padding>
+               <Insets bottom="14" left="20" right="20" top="14" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="addAdminButton" onAction="#handleAddAdmin" styleClass="menu-button-admin" text="Add New Admin">
+            <padding>
+               <Insets bottom="14" left="20" right="20" top="14" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="userDashboardButton" onAction="#handleUserDashboard" styleClass="menu-button-admin" text="User Dashboard">
+            <padding>
+               <Insets bottom="14" left="20" right="20" top="14" />
+            </padding>
+         </Button>
+      </VBox>
+   </left>
+   
+   <center>
+      <VBox alignment="CENTER" spacing="35" styleClass="main-content-admin">
+         <padding>
+            <Insets bottom="50" left="50" right="50" top="50" />
+         </padding>
+         
+         <!-- Welcome Section -->
+         <VBox alignment="CENTER" spacing="15">
+            <Text styleClass="dashboard-title-admin" text="Admin Dashboard" />
+            <Text fx:id="adminInfoText" styleClass="dashboard-subtitle-admin" text="System Administration" />
+         </VBox>
+         
+         <!-- Statistics Cards -->
+         <HBox alignment="CENTER" spacing="30">
+            <VBox alignment="CENTER" styleClass="stat-card-admin">
+               <Text styleClass="stat-number-admin" text="0" fx:id="totalItemsCount" />
+               <Text styleClass="stat-label-admin" text="Total Items" />
+            </VBox>
+            
+            <VBox alignment="CENTER" styleClass="stat-card-admin">
+               <Text styleClass="stat-number-admin" text="0" fx:id="totalUsersCount" />
+               <Text styleClass="stat-label-admin" text="Total Users" />
+            </VBox>
+            
+            <VBox alignment="CENTER" styleClass="stat-card-admin">
+               <Text styleClass="stat-number-admin" text="0" fx:id="lostItemsCount" />
+               <Text styleClass="stat-label-admin" text="Lost Items" />
+            </VBox>
+            
+            <VBox alignment="CENTER" styleClass="stat-card-admin">
+               <Text styleClass="stat-number-admin" text="0" fx:id="foundItemsCount" />
+               <Text styleClass="stat-label-admin" text="Found Items" />
+            </VBox>
+         </HBox>
+         
+         <!-- Quick Actions -->
+         <VBox alignment="CENTER" spacing="20">
+            <Text styleClass="section-title-admin" text="Quick Actions" />
+            
+            <HBox alignment="CENTER" spacing="30">
+               <Button onAction="#handleViewAllItems" styleClass="action-button-view" text="View All Items">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+               
+               <Button onAction="#handleViewUsers" styleClass="action-button-view" text="View All Users">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+               
+               <Button onAction="#handleAddAdmin" styleClass="primary-button-admin" text="Add New Admin">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+            </HBox>
+         </VBox>
+         
+         <!-- Logout Button -->
+         <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="logout-button" text="Logout">
+            <padding>
+               <Insets bottom="12" left="35" right="35" top="12" />
+            </padding>
+         </Button>
+      </VBox>
+   </center>
+</BorderPane>

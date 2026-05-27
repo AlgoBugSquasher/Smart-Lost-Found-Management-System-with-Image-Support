@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650" minWidth="1000" prefHeight="650" prefWidth="1000" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDashboardController">
+   <top>
+      <VBox styleClass="header-bar">
+         <padding>
+            <Insets bottom="15" left="20" right="20" top="15" />
+         </padding>
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Label styleClass="header-title" text="Smart Lost &amp; Found" />
+            <Label fx:id="welcomeLabel" styleClass="header-subtitle" text="Welcome, User" />
+         </HBox>
+      </VBox>
+   </top>
+   
+   <left>
+      <VBox alignment="TOP_CENTER" spacing="15" styleClass="sidebar">
+         <padding>
+            <Insets bottom="20" left="15" right="15" top="20" />
+         </padding>
+         
+         <Text styleClass="menu-title" text="MENU" />
+         
+         <Button fx:id="reportLostButton" onAction="#handleReportLost" styleClass="menu-button" text="Report Lost Item">
+            <padding>
+               <Insets bottom="12" left="20" right="20" top="12" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="reportFoundButton" onAction="#handleReportFound" styleClass="menu-button" text="Report Found Item">
+            <padding>
+               <Insets bottom="12" left="20" right="20" top="12" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="viewItemsButton" onAction="#handleViewItems" styleClass="menu-button" text="View All Items">
+            <padding>
+               <Insets bottom="12" left="20" right="20" top="12" />
+            </padding>
+         </Button>
+         
+         <Button fx:id="myItemsButton" onAction="#handleMyItems" styleClass="menu-button" text="My Items">
+            <padding>
+               <Insets bottom="12" left="20" right="20" top="12" />
+            </padding>
+         </Button>
+      </VBox>
+   </left>
+   
+   <center>
+      <VBox alignment="CENTER" spacing="30" styleClass="main-content">
+         <padding>
+            <Insets bottom="40" left="40" right="40" top="40" />
+         </padding>
+         
+         <!-- Welcome Section -->
+         <VBox alignment="CENTER" spacing="15">
+            <Text styleClass="dashboard-title" text="User Dashboard" />
+            <Text fx:id="userInfoText" styleClass="dashboard-subtitle" text="Manage your lost and found items" />
+         </VBox>
+         
+         <!-- Quick Actions -->
+         <VBox alignment="CENTER" spacing="20">
+            <Text styleClass="section-title" text="Quick Actions" />
+            
+            <HBox alignment="CENTER" spacing="30">
+               <Button onAction="#handleReportLost" styleClass="action-button-lost" text="Report Lost">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+               
+               <Button onAction="#handleReportFound" styleClass="action-button-found" text="Report Found">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+               
+               <Button onAction="#handleViewItems" styleClass="action-button-view" text="View All Items">
+                  <padding>
+                     <Insets bottom="15" left="25" right="25" top="15" />
+                  </padding>
+               </Button>
+            </HBox>
+         </VBox>
+         
+         <!-- Logout Button -->
+         <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="logout-button" text="Logout">
+            <padding>
+               <Insets bottom="12" left="35" right="35" top="12" />
+            </padding>
+         </Button>
+         
+         <!-- Back to Admin Panel Button (only visible when admin is viewing) -->
+         <Button fx:id="backToAdminButton" onAction="#handleBackToAdmin" styleClass="secondary-button" text="← Back to Admin Panel" visible="false">
+            <padding>
+               <Insets bottom="12" left="30" right="30" top="12" />
+            </padding>
+         </Button>
+      </VBox>
+   </center>
+</BorderPane>

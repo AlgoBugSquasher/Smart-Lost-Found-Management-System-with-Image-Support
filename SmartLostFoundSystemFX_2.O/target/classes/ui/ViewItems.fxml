@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableCell?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="1000" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewItemsController">
+   <top>
+      <VBox styleClass="view-header">
+         <padding>
+            <Insets bottom="15" left="20" right="20" top="15" />
+         </padding>
+         <HBox alignment="CENTER_LEFT" spacing="20">
+            <Text styleClass="view-title" text="All Items" />
+            <TextField fx:id="searchField" onKeyReleased="#handleSearch" promptText="Search items..." styleClass="search-field" />
+            <HBox spacing="10">
+               <Button fx:id="lostItemsButton" onAction="#handleShowLostItems" styleClass="filter-button" text="Lost Items">
+                  <padding>
+                     <Insets bottom="5" left="15" right="15" top="5" />
+                  </padding>
+               </Button>
+               <Button fx:id="foundItemsButton" onAction="#handleShowFoundItems" styleClass="filter-button" text="Found Items">
+                  <padding>
+                     <Insets bottom="5" left="15" right="15" top="5" />
+                  </padding>
+               </Button>
+               <Button fx:id="allItemsButton" onAction="#handleShowAllItems" styleClass="filter-button" text="All">
+                  <padding>
+                     <Insets bottom="5" left="15" right="15" top="5" />
+                  </padding>
+               </Button>
+            </HBox>
+         </HBox>
+      </VBox>
+   </top>
+   
+   <center>
+      <HBox spacing="10">
+         <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+         </padding>
+         
+         <!-- LEFT: TableView -->
+         <VBox alignment="TOP_CENTER" spacing="10" HBox.hgrow="ALWAYS">
+            <TableView fx:id="itemsTable" styleClass="items-table" VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn fx:id="nameColumn" prefWidth="120" text="Name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="descriptionColumn" prefWidth="150" text="Description">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="locationColumn" prefWidth="100" text="Location">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="location" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="dateColumn" prefWidth="90" text="Date">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="typeColumn" prefWidth="70" text="Type">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="type" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="ownerColumn" prefWidth="90" text="Owner">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="userName" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  
+                  <TableColumn fx:id="actionColumn" prefWidth="80" text="Action">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            
+            <!-- Buttons -->
+            <HBox alignment="CENTER" spacing="20">
+               <Button fx:id="backButton" onAction="#handleBack" styleClass="back-button" text="Back">
+                  <padding>
+                     <Insets bottom="8" left="20" right="20" top="8" />
+                  </padding>
+               </Button>
+               
+               <Button fx:id="refreshButton" onAction="#handleRefresh" styleClass="refresh-button" text="Refresh">
+                  <padding>
+                     <Insets bottom="8" left="20" right="20" top="8" />
+                  </padding>
+               </Button>
+            </HBox>
+         </VBox>
+         
+         <!-- RIGHT: Detail Panel -->
+         <VBox fx:id="detailPanel" alignment="TOP_LEFT" spacing="15" styleClass="detail-panel">
+            <padding>
+               <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <!-- Title -->
+            <Text styleClass="detail-title" text="Item Details" />
+            
+            <!-- Placeholder when no item selected -->
+            <Text fx:id="placeholderText" styleClass="placeholder-text" text="Select an item to view details" />
+            
+            <!-- Detail Grid (hidden by default) -->
+            <GridPane fx:id="detailGrid" hgap="15" vgap="12" visible="false">
+               <columnConstraints>
+                  <ColumnConstraints minWidth="100" prefWidth="100" />
+                  <ColumnConstraints minWidth="150" prefWidth="200" />
+               </columnConstraints>
+               
+               <!-- Item Name -->
+               <Label styleClass="detail-label" text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+               <Label fx:id="nameLabel" styleClass="detail-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+               
+               <!-- Description -->
+               <Label styleClass="detail-label" text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+               <Label fx:id="descriptionLabel" styleClass="detail-value" text="" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               
+               <!-- Location -->
+               <Label styleClass="detail-label" text="Location:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+               <Label fx:id="locationLabel" styleClass="detail-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               
+               <!-- Date -->
+               <Label styleClass="detail-label" text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+               <Label fx:id="dateLabel" styleClass="detail-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               
+               <!-- Type -->
+               <Label styleClass="detail-label" text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+               <Label fx:id="typeLabel" styleClass="detail-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               
+               <!-- Owner -->
+               <Label styleClass="detail-label" text="Owner:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+               <Label fx:id="ownerLabel" styleClass="detail-value" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </GridPane>
+            
+            <!-- Image Section -->
+            <VBox alignment="CENTER" spacing="10" visible="false" fx:id="imageSection">
+               <Label styleClass="detail-label" text="Image:" />
+               <ImageView fx:id="itemImageView" fitHeight="180" fitWidth="220" preserveRatio="true" styleClass="item-image" />
+            </VBox>
+         </VBox>
+      </HBox>
+   </center>
+</BorderPane>
